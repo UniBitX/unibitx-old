@@ -46,7 +46,7 @@ If you are using Clang, you will need Clang 6.0 or higher. You will also need li
 The binaries will be in the `src` folder when you are complete.
 
 - `cd src`
-- `./TurtleCoind --version`
+- `./UniBitXd --version`
 
 ##### Ubuntu, using Clang
 
@@ -192,7 +192,7 @@ The binaries will be in the `src/Release` folder when you are complete.
 - `UniBitXd.exe --version`
 
 #### Thanks
-Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project, TurtleCoin Community
+Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project, TurtleCoin Community, Universal Bit Project
 
 ### Copypasta for license when editing files
 
@@ -206,4 +206,3 @@ Hi UniBitX contributor, thanks for forking and sending back Pull Requests. Exten
 //
 // Please see the included LICENSE file for more information.
 ```
-# yt
