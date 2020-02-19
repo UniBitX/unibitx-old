@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {
+      "name": "Box-1",
+      "url": "104.251.210.140",
+      "port": 1111,
+      "ssl": false,
+      "cache": false
+    },
+    {
+      "name": "Box-2",
+      "url": "104.251.210.135",
+      "port": 1111,
+      "ssl": false,
+      "cache": false
+    },
+    {
+      "name": "Box-3",
+      "url": "104.237.10.228",
+      "port": 1111,
+      "ssl": false,
+      "cache": false
+    }
+  ]
+}
