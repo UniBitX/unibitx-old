@@ -27,39 +27,39 @@ matrix:
     - STRIP="strip"
 
   # Ubuntu, g++-7
-#  - os: linux
-#    compiler: gcc
-#    addons:
-#      apt:
-#        sources:
-#        - ubuntu-toolchain-r-test
-#        packages:
-#          - libboost1.55-all-dev
-#          - libssl-dev
-#          - g++-7
-#          - gcc-7
-#    env:
-#    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-#    - LABEL="linux-g++-7"
-#    - STRIP="strip"
+  - os: linux
+    compiler: gcc
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+          - libboost1.55-all-dev
+          - libssl-dev
+          - g++-7
+          - gcc-7
+    env:
+    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+    - LABEL="linux-g++-7"
+    - STRIP="strip"
 
   # Ubuntu, clang-6
-#  - os: linux
-#    compiler: clang
-#    addons:
-#      apt:
-#        sources:
-#        - ubuntu-toolchain-r-test
-#        - llvm-toolchain-trusty-6.0
-#        packages:
-#          - libboost1.55-all-dev
-#          - libssl-dev
-#          - clang-6.0
-#          - libstdc++-7-dev
-#    env:
-#    - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
-#    - LABEL="linux-clang-6"
-#    - STRIP="strip"
+  - os: linux
+    compiler: clang
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - llvm-toolchain-trusty-6.0
+        packages:
+          - libboost1.55-all-dev
+          - libssl-dev
+          - clang-6.0
+          - libstdc++-7-dev
+    env:
+    - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
+    - LABEL="linux-clang-6"
+    - STRIP="strip"
 
   ## OSX, g++-8
 #  - os: osx
@@ -90,41 +90,41 @@ matrix:
 #    - STRIP="strip"
 
   # Arm (aarch64) cross compile
-#  - os: linux
-#    env:
-#    - MATRIX_EVAL="CC=aarch64-linux-gnu-gcc && CXX=aarch64-linux-gnu-g++"
-#    - LABEL="aarch64"
-#    - _DEPLOYABLE="true"
-#    - STRIP="aarch64-linux-gnu-strip"
+  - os: linux
+    env:
+    - MATRIX_EVAL="CC=aarch64-linux-gnu-gcc && CXX=aarch64-linux-gnu-g++"
+    - LABEL="aarch64"
+    - _DEPLOYABLE="true"
+    - STRIP="aarch64-linux-gnu-strip"
 
-#before_install:
-#- eval $MATRIX_EVAL
+before_install:
+- eval $MATRIX_EVAL
 
 install:
 # Need to uninstall oclint to get newer gcc installed https://github.com/travis-ci/travis-ci/issues/8826
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then brew cask uninstall --force oclint || true ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then brew cask uninstall --force oclint || true ; fi
 
 # Need a newer version of llvm to link against to get std::filesystem / std::experimental::filesystem
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install llvm || travis_retry brew upgrade llvm ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install llvm || travis_retry brew upgrade llvm ; fi
 
 # Need to make sure that we have openssl installed
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install openssl || travis_retry brew upgrade openssl ; fi#
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then brew link --force openssl ; fi
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then ln -s /usr/local/opt/openssl/include/openssl /usr/local/include ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install openssl || travis_retry brew upgrade openssl ; fi#
+- if [[ "${LABEL:0:3}" == "osx" ]]; then brew link --force openssl ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then ln -s /usr/local/opt/openssl/include/openssl /usr/local/include ; fi
 
 # Neeed to install ccache
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install ccache ; fi
-#- if [[ "${LABEL:0:3}" == "osx" ]]; then export PATH="/usr/local/opt/ccache/libexec:$PATH" ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then travis_retry brew install ccache ; fi
+- if [[ "${LABEL:0:3}" == "osx" ]]; then export PATH="/usr/local/opt/ccache/libexec:$PATH" ; fi
 
 # Install the correct gcc version
-#- if [[ "$LABEL" == "osx-g++-8" ]]; then travis_retry brew install gcc@8 ; fi
-#- if [[ "$LABEL" == "osx-g++-7" ]]; then travis_retry brew install gcc@7 ; fi
+- if [[ "$LABEL" == "osx-g++-8" ]]; then travis_retry brew install gcc@8 ; fi
+- if [[ "$LABEL" == "osx-g++-7" ]]; then travis_retry brew install gcc@7 ; fi
 
 script:
-#- eval $MATRIX_EVAL
+- eval $MATRIX_EVAL
 # If we're cross compiling aarch64, make sure our build enivornment is setup
 # we do this in the script stage because this happens after the repo is cloned
-#- if [[ "$LABEL" == "aarch64" ]]; then source scripts/prep-aarch64.sh ; fi
+- if [[ "$LABEL" == "aarch64" ]]; then source scripts/prep-aarch64.sh ; fi
 - mkdir build && cd build
 - cmake ..
 - make -j2
@@ -133,7 +133,7 @@ script:
 before_deploy:
 - if [[ "${TRAVIS_TAG}" == "" ]]; then export TRAVIS_TAG=${TRAVIS_COMMIT} ; fi
 - cd src
-- TARGETS="UniBitXd miner uniwallet uni-service uniwallet-beta cryptotest wallet-api"
+- TARGETS="UniBitXd miner uniwallet unibitx-service uniwallet-beta cryptotest wallet-api"
 - ${STRIP} ${TARGETS}
 - rm -rf yt-${TRAVIS_TAG}
 - mkdir yt-${TRAVIS_TAG}
@@ -147,11 +147,12 @@ before_deploy:
 #
 deploy:
   - provider: releases
-    file:
+  api_key:
+    secure: WMWuWM2fTwVRiZoe8MwPoSfl/eUDymubxoj7RuawgIDEtMAc8P+ztliZHv5loheF7uQcB+ltvchUoyqZTxcFs9xl1TsKe9RUVTjpYDZE2guHnSqEUm/XEiC4GrW2xTSeLg3bDC9evESCg5dZptTOelKXxg4EyWc+3C25rCGwa92ob79AKmCLFUiprLwIN9xgF09wGIaK0T4fdMnsIjsoVhaWg4/whXmG+sQyxMcc4yOPmkMSgTiE2R2RpUfB3foOM6RnGfkyXmDHlSfBJUYIeHbMvc9fQd01GE9dG5eFAe/RCxSdybldVkYUb2ci0nR35ootb9kAi4wSHqKPXiKJulrugqM8WG3UhRRMKLI0jPsTrfxIKGpd2HTPWR9+scTndCSUTqnQ7UXr+UdLxiwoQRNFshPrcAji3H8M3Uxa31Sy3MSTmCEvpbQO+ZWiEOhXHWiPu0fOJsE4Zk0wNZHkIVfKYr3urkU82la+A1XfhyI/2aUgGFUcEbAZMPaYzK8SlvKOcPPH/sjUuFQrr7s1iXr5R2qn5GMeKcQZYrGi3cXtvnTycy1K3KxCPF/CDJQVzk3DOEDpe7b6pJVyO1GuF24fGws+pdrLo1bliOIi+U0K07Kb0RagdRE6NHRF23fNvhOD5x3qlfYWx+UXACFK9/ABRs1Ytizym95aqFB1D5A=    file:
       - yt-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true
     on:
-      repo: unibitx/unibitx
+      repo: UniBitX/unibitx
       tags: true
       condition: "$_DEPLOYABLE = true"
 #
