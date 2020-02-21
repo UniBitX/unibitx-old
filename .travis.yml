@@ -147,13 +147,11 @@ before_deploy:
 #
 deploy:
   - provider: releases
-    user: "roy.hodge@mail.com"
-    password: "S1mpl3p4ss"
     file:
       - yt-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true
     on:
-      repo: royhodge/yt
+      repo: unibitx/unibitx
       tags: true
       condition: "$_DEPLOYABLE = true"
 #
