@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, user!
+    - name: Run a multi-line script
+      run: |
+        echo Add repo
+        git clone https://github.com/unibitx/unibitx/
+        echo building and testing your project now..
+        mkdir build && cd build && cmake .. && make
+        echo Build complete!
+        echo Testing..
+        ./cryptotest
