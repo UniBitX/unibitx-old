@@ -67,13 +67,13 @@ UniBItXd --print-genesis-tx --genesis-block-reward-address
 * You should see your premine appear in the previously generated wallet.
 
 */
-const char     GENESIS_COINBASE_TX_HEX[]                     = "012801ff0001ff87f7a9c6f7fdaa0c02096958955d9e23040db14d096a13950bf7406a107e53da7132a1e9ca82880c0f2101d7200c75c3c64ba3a55615f2a35d2980a626f989a081d7b2755ab70aa40ac7f6";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "012801ff0001ff87f7a9c6f7fdaa0c02f1d6cdd2c5a36be0500c844316e5f79cb986209f1d4d97b9c7ec23538a5fd28021016416ead62442ee044126eacfcc22feea1b30d346e16ffd8ccf77d365a3d2604c";
 static_assert(sizeof(GENESIS_COINBASE_TX_HEX)/sizeof(*GENESIS_COINBASE_TX_HEX) != 1, "GENESIS_COINBASE_TX_HEX must not be empty.");
 
 /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
    You can get this value by doing "print_block 2" in UniBitXd. It is used to know what timestamp
    to import from when the block height cannot be found in the node or the node is offline. */
-const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1512800692;
+const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1583266545;
 
 const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
 const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; //size of block (bytes) after which reward for block calculated using block size
@@ -159,9 +159,9 @@ const size_t   FUSION_TX_MIN_IN_OUT_COUNT_RATIO              = 4;
 
 const uint32_t UPGRADE_HEIGHT_V2                             = 1;
 const uint32_t UPGRADE_HEIGHT_V3                             = 2;
-// const uint32_t UPGRADE_HEIGHT_V4                             = 10; // Upgrade height for CN-Lite Variant 1 switch.
-// const uint32_t UPGRADE_HEIGHT_V5                             = 40; // Upgrade height for CN-Turtle Variant 2 switch.
-const uint32_t UPGRADE_HEIGHT_CURRENT                        = UPGRADE_HEIGHT_V3;
+const uint32_t UPGRADE_HEIGHT_V4                             = 10;
+const uint32_t UPGRADE_HEIGHT_V5                             = 40; // Upgrade height for CN-Turtle Variant 2 switch.
+const uint32_t UPGRADE_HEIGHT_CURRENT                        = UPGRADE_HEIGHT_V5;
 
 const unsigned UPGRADE_VOTING_THRESHOLD                      = 90;               // percent
 const uint32_t UPGRADE_VOTING_WINDOW                         = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;  // blocks
@@ -253,7 +253,7 @@ const uint64_t DATABASE_READ_BUFFER_MB_DEFAULT_SIZE          = 10;
 const uint32_t DATABASE_DEFAULT_MAX_OPEN_FILES               = 100;
 const uint16_t DATABASE_DEFAULT_BACKGROUND_THREADS_COUNT     = 2;
 
-const char     LATEST_VERSION_URL[]                          = "http://latest.unibitx.app";
+const char     LATEST_VERSION_URL[]                          = "https://latest.unibitx.org";
 const std::string LICENSE_URL                                = "https://github.com/unibitx/unibitx/blob/master/LICENSE";
 const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
 {
