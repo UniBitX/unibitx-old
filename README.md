@@ -40,7 +40,7 @@ If you are using Clang, you will need Clang 6.0 or higher. You will also need li
 - `cd unibitx`
 - `mkdir build`
 - `cd build`
-- `cmake ..`
+- `cmake .. -DCMAKE_BUILD_TYPE=Release`
 - `make`
 
 The binaries will be in the `src` folder when you are complete.
