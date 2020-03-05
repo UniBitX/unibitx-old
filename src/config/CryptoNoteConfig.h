@@ -90,16 +90,16 @@ const uint64_t MINIMUM_FEE                                   = UINT64_C(10);
 const uint64_t MINIMUM_MIXIN_V1                              = 0;
 const uint64_t MAXIMUM_MIXIN_V1                              = 100;
 
-const uint64_t MINIMUM_MIXIN_V2                              = 7;
-const uint64_t MAXIMUM_MIXIN_V2                              = 7;
+const uint64_t MINIMUM_MIXIN_V2                              = 0;
+const uint64_t MAXIMUM_MIXIN_V2                              = 0;
 
-const uint64_t MINIMUM_MIXIN_V3                              = 0;
-const uint64_t MAXIMUM_MIXIN_V3                              = 0;
+const uint64_t MINIMUM_MIXIN_V3                              = 3;
+const uint64_t MAXIMUM_MIXIN_V3                              = 3;
 
 /* The heights to activate the mixin limits at */
 const uint32_t MIXIN_LIMITS_V1_HEIGHT                        = 15;
 const uint32_t MIXIN_LIMITS_V2_HEIGHT                        = 20;
-const uint32_t MIXIN_LIMITS_V3_HEIGHT                        = 30;
+const uint32_t MIXIN_LIMITS_V3_HEIGHT                        = 10000;
 
 /* The mixin to use by default with uniwallet and unibitx-service */
 /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
