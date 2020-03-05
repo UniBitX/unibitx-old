@@ -58,7 +58,7 @@ const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(88888888
 --print-genesis-tx --genesis-block-reward-address <premine wallet address>
 
 For example:
-UniBItXd --print-genesis-tx --genesis-block-reward-address 
+./UniBitXd --print-genesis-tx --genesis-block-reward-address 
 
 * Take the hash printed, and replace it with the hash below in GENESIS_COINBASE_TX_HEX
 
@@ -67,7 +67,7 @@ UniBItXd --print-genesis-tx --genesis-block-reward-address
 * You should see your premine appear in the previously generated wallet.
 
 */
-const char     GENESIS_COINBASE_TX_HEX[]                     = "012801ff0001ff87f7a9c6f7fdaa0c02de994ae70f1aa59376bed63dc0d338af2bb1ad0a5c17070e33f006c880ea8cba2101402ea834bb9201a104041c2fc6e75fc65e2204e29c9945ec065e59232a85cbc6";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "012801ff0001ff87f7a9c6f7fdaa0c02451bfed78c07561d5d84b79cde756f91bd18198e9f9c41e63a4018e333f35547210159b8dbf6a4cf83832507479306509c95e40ea5c561f598c4c4f5b02d27766554";
 static_assert(sizeof(GENESIS_COINBASE_TX_HEX)/sizeof(*GENESIS_COINBASE_TX_HEX) != 1, "GENESIS_COINBASE_TX_HEX must not be empty.");
 
 /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
