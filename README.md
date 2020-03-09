@@ -48,39 +48,6 @@ The binaries will be in the `src` folder when you are complete.
 - `cd src`
 - `./UniBitXd --version`
 
-##### Ubuntu, using Clang
-
-- `sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y`
-- `wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -`
-
-You need to modify the below command for your version of ubuntu - see https://apt.llvm.org/
-
-* Ubuntu 14.04 (Trusty)
-- `sudo add-apt-repository "deb https://apt.llvm.org/trusty/ llvm-toolchain-trusty 6.0 main"`
-
-* Ubuntu 16.04 (Xenial)
-- `sudo add-apt-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial 6.0 main"`
-
-* Ubuntu 18.04 (Bionic)
-- `sudo add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main"`
-
-- `sudo apt-get update`
-- `sudo apt-get install aptitude -y`
-- `sudo aptitude install -y -o Aptitude::ProblemResolver::SolutionCost='100*canceled-actions,200*removals' build-essential clang-6.0 libstdc++-7-dev git libboost-all-dev python-pip libssl-dev`
-- `sudo pip install cmake`
-- `export CC=clang-6.0`
-- `export CXX=clang++-6.0`
-- `git clone -b master --single-branch https://github.com/unibitx/unibitx`
-- `cd unibitx`
-- `mkdir build`
-- `cd build`
-- `cmake ..`
-- `make`
-
-The binaries will be in the `src` folder when you are complete.
-
-- `cd src`
-- `./UnibBitX --version`
 
 ##### Generic Linux
 
@@ -101,31 +68,8 @@ The binaries will be in the `src` folder when you are complete.
 - `cd src`
 - `./UniBitXd --version`
 
-#### OSX/Apple, using GCC
 
-##### Prerequisites
-
-- Install XCode and Developer Tools.
-
-##### Building
-
-- `which brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-- `brew install --force cmake boost llvm gcc@8 openssl`
-- `export CC=gcc-8`
-- `export CXX=g++-8`
-- `git clone -b master --single-branch https://github.com/unibitx/unibitx`
-- `cd unibitx`
-- `mkdir build`
-- `cd build`
-- `cmake ..`
-- `make`
-
-The binaries will be in the `src` folder when you are complete.
-
-- `cd src`
-- `./UniBitXd --version`
-
-#### OSX/Apple, using Clang
+#### OSX/Apple (using Clang)
 
 ##### Prerequisites
 
@@ -141,7 +85,7 @@ The binaries will be in the `src` folder when you are complete.
 - `cd unibitx`
 - `mkdir build`
 - `cd build`
-- `cmake ..`
+- `cmake .. -DBoost_NO_BOOST_CMAKE=TRUE`
 - `make`
 
 The binaries will be in the `src` folder when you are complete.
