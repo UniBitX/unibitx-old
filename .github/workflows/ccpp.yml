@@ -2,8 +2,8 @@ name: C/C++ CI
 
 on: [push]
 
-jobs:
-  build:
+jobs:fuctioning wallet alert issue
+  build:wallet alert
 
     runs-on: ubuntu-latest
     
